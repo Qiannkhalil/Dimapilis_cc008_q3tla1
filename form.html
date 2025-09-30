@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="form-container">
+        <h2 class="main-heading">
+            New User Registration
+        </h2>
+
+        <!-- Action points to output.html using GET method to pass data via URL -->
+    <form id="registrationForm" action="output.html" method="GET">
+            
+            <!-- Personal Details Section -->
+            <fieldset class="form-section">
+                <legend class="section-legend">Personal Details</legend>
+                
+                <!-- Full Name (3 separate fields) -->
+                <div style="margin-bottom: 1.5rem;">
+                    <label class="label-style" style="margin-bottom: 0.75rem; display: block; font-size: 1rem; font-weight: 600;">Full Name</label>
+                    <div class="grid-3-col">
+                        <!-- First Name -->
+                        <div>
+                            <label for="firstName" class="label-style">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required class="input-style">
+                        </div>
+                        <!-- Middle Name -->
+                        <div>
+                            <label for="middleName" class="label-style">Middle Name</label>
+                            <input type="text" id="middleName" name="middleName" class="input-style">
+                        </div>
+                        <!-- Last Name -->
+                        <div>
+                            <label for="lastName" class="label-style">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required class="input-style">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date of Birth & Birth Location -->
+                <div class="grid-2-col" style="margin-top: 1.5rem;">
+                    <div>
+                        <label for="dob" class="label-style">Date of Birth</label>
+                        <input type="date" id="dob" name="dateOfBirth" required class="input-style">
+                    </div>
+                    <div>
+                        <label for="birthLocation" class="label-style">Birth Location </label>
+                        <input type="text" id="birthLocation" name="birthLocation" maxlength="64" required class="input-style">
+                    </div>
+                </div>
+
+                <!-- Sex/Gender & Civil Status -->
+                <div class="grid-2-col" style="margin-top: 1.5rem;">
+                    <div>
+                        <label class="label-style">Sex/Gender</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sexGender" value="Male" required class="radio-input">
+                                <span class="radio-text">Male</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sexGender" value="Female" class="radio-input">
+                                <span class="radio-text">Female</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="civilStatus" class="label-style">Civil Status</label>
+                        <select id="civilStatus" name="civilStatus" required class="input-style">
+                            <option value="" disabled selected>Select Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Nationality & Religion -->
+                <div class="grid-2-col" style="margin-top: 1.5rem;">
+                    <div>
+                        <label for="nationality" class="label-style">Nationality </label>
+                        <input type="text" id="nationality" name="nationality" maxlength="64" required class="input-style">
+                    </div>
+                    <div>
+                        <label for="religion" class="label-style">Religion </label>
+                        <input type="text" id="religion" name="religion" maxlength="64" class="input-style">
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="separator"></div>
+
+            <!-- Contact & Address Section -->
+            <fieldset class="form-section">
+                <legend class="section-legend">Contact & Emergency</legend>
+                
+                <div class="grid-2-col">
+                    <!-- Contact Number -->
+                    <div>
+                        <label for="contactNumber" class="label-style">Contact Number</label>
+                        <!-- Using type="tel" for better mobile keyboard, no length validation is applied now -->
+                        <input type="tel" id="contactNumber" name="contactNumber" required class="input-style">
+                    </div>
+                    <!-- Email Address -->
+                    <div>
+                        <label for="email" class="label-style">Email Address</label>
+                        <input type="email" id="email" name="emailAddress" required class="input-style">
+                    </div>
+                </div>
+
+                <!-- Home Address -->
+                <div style="margin-top: 1.5rem;">
+                    <label for="homeAddress" class="label-style">Home Address</label>
+                    <textarea id="homeAddress" name="homeAddress" rows="3" required class="input-style"></textarea>
+                </div>
+                
+                <!-- Emergency Contact Group -->
+                <div class="emergency-box" style="margin-top: 1.5rem;">
+                    <p style="font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 0.75rem;">Emergency Contact</p>
+                    <!-- Emergency Contact fields removed as requested -->
+                </div>
+            </fieldset>
+
+            <div class="separator"></div>
+
+            <!-- Security Section -->
+            <fieldset class="form-section">
+                <legend class="section-legend">Account Credentials</legend>
+
+                <!-- Username -->
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="username" class="label-style">Username </label>
+                    <input type="text" id="username" name="username" maxlength="64" required class="input-style">
+                </div>
+
+                <!-- Password & Confirm Password -->
+                <div class="grid-2-col">
+                    <div>
+                        <label for="password" class="label-style">Password </label>
+                        <input type="password" id="password" name="password" maxlength="64" required class="input-style">
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="label-style">Confirm Password </label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" maxlength="64" required class="input-style">
+                    </div>
+                </div>
+
+                <!-- Password Match Error Message -->
+                <p id="passwordError" class="hidden" style="margin-top: 0.5rem;">
+                  
+                </p>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button
+                type="submit"
+                class="submit-button"
+                style="margin-top: 2rem;"
+            >
+                Register & View Data
+            </button>
+        </form>
+    </div>
+
+    <!-- Validation and dynamic features are now handled in script.js -->
+</body>

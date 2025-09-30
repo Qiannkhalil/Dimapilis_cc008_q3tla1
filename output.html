@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Output</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="form-container">
+        <h2 class="main-heading">Registration Data</h2>
+        <div id="outputData" class="output-section"></div>
+        <p style="color: #888; font-size: 0.95rem; margin-top: 1.5rem;">Note: Photo and password fields cannot be displayed for security and browser reasons.</p>
+    </div>
+    <script>
+        // Helper to get all URL params
+        function getParams() {
+            const params = {};
+            const search = window.location.search.substring(1);
+            search.split('&').forEach(function (pair) {
+                if (!pair) return;
+                const parts = pair.split('=');
+                params[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1] || '');
+            });
+            return params;
+        }
+
+        // List of fields to display
+        const fields = [
+            { label: 'First Name', key: 'firstName' },
+            { label: 'Middle Name', key: 'middleName' },
+            { label: 'Last Name', key: 'lastName' },
+            { label: 'Date of Birth', key: 'dateOfBirth' },
+            { label: 'Birth Location', key: 'birthLocation' },
+            { label: 'Sex/Gender', key: 'sexGender' },
+            { label: 'Civil Status', key: 'civilStatus' },
+            { label: 'Nationality', key: 'nationality' },
+            { label: 'Religion', key: 'religion' },
+            { label: 'Contact Number', key: 'contactNumber' },
+            { label: 'Email Address', key: 'emailAddress' },
+            { label: 'Home Address', key: 'homeAddress' },
+            { label: 'Emergency Name', key: 'emergencyName' },
+            { label: 'Emergency Relationship', key: 'emergencyRelationship' },
+            { label: 'Emergency Number', key: 'emergencyNumber' },
+            { label: 'Username', key: 'username' }
+        ];
+
+        const params = getParams();
+        let html = '<ul class="output-list">';
+        fields.forEach(field => {
+            html += `<li><strong>${field.label}:</strong> ${params[field.key] || ''}</li>`;
+        });
+        html += '</ul>';
+
+        // Show output
+        document.getElementById('outputData').innerHTML = html;
+    </script>
+</body>
+</html>
